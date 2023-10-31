@@ -13,7 +13,7 @@ db = Database("db.sqlite")
 async def get_start(message: Message, bot: Bot):
     if message.chat.type == "private":
         if not db.user_exists(message.from_user.id):
-            db.user_add(message.from_user.id)
+            db.user_add(message.from_user.id, message.from_user.full_name)
         await message.answer(f"Добропожаловать {message.from_user.full_name}", reply_markup=reply_keyboard)
 
 

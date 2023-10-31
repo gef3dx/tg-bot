@@ -19,7 +19,7 @@ def get_settings():
     return Settings(
         bots=Bots(
             bot_token=os.getenv('TG_TOKEN'),
-            admin_id=os.getenv('ADMIN_ID')
+            admin_id=int(os.getenv('ADMIN_ID'))
         )
     )
 

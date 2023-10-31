@@ -11,9 +11,9 @@ class Database:
             result = self.cursor.execute("SELECT * FROM `users` WHERE `user_id` = ?", (user_id,)).fetchmany(1)
             return bool(len(result))
 
-    def user_add(self, user_id):
+    def user_add(self, user_id, user_name):
         with self.connection:
-            return self.cursor.execute("INSERT INTO `users` (`user_id`) VALUES (?)", (user_id,))
+            return self.cursor.execute("INSERT INTO `users` (`user_id`, `user_name`) VALUES (?, ?)", (user_id, user_name))
 
 
     def set_active(self, user_id, active):
