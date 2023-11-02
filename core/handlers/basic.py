@@ -19,8 +19,7 @@ async def get_start(message: Message, bot: Bot):
 
 async def send_all(message: Message, bot: Bot):
     if message.chat.type == "private":
-        if message.from_user.id == settings.bots.admin_id:
-            print(settings.bots.admin_id)
+        if db.is_admin(message.from_user.id):
             text = message.text[9:]
             users = db.get_users()
             for row in users:

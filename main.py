@@ -29,7 +29,7 @@ async def main() -> None:
     dp.shutdown.register(stop_bot)
 
     dp.message.register(get_start, Command(commands=['start', 'help']))
-    dp.message.register(send_all, Command(commands=['sendall',]))
+    dp.message.register(send_all, Command(commands=['sendall']))
     dp.message.register(hello, F.text == 'Привет')
 
     dp.callback_query.register(inline_callback, F.data == "test_funk")

@@ -24,3 +24,16 @@ class Database:
         with self.connection:
             return self.cursor.execute("SELECT `user_id`, `active` FROM `users`").fetchall()
 
+    def get_user(self, user_id):
+        with self.connection:
+            return self.cursor.execute("SELECT * FROM `users` WHERE `user_id` = ?", (user_id,)).fetchmany(1)
+
+
+    def is_admin(self, user_id):
+        with self.connection:
+            is_admin = self.cursor.execute("SELECT `is_admin` FROM `users` WHERE `user_id` = ?", (user_id,)).fetchmany(1)
+            if is_admin[0][0] == 1:
+                return True
+            else:
+                return False
+
