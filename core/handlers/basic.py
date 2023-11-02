@@ -4,7 +4,6 @@ from aiogram.types import Message
 from core.keyboard.reply import reply_keyboard
 from core.keyboard.inline import inline_keyboard
 from core.database.baseconnect import Database
-from core.settings import settings
 
 
 db = Database("db.sqlite")
