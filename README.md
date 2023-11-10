@@ -1,4 +1,4 @@
-# tg-bot
+# Tg-Bot temlate
  Start tempate telegram bot by gef3dx
 #### How to install
 
@@ -6,6 +6,7 @@
  - go to the pack `tg-bot`
  - Create VENV `python -m venv venv`
  - Install requirements `pip install -r requirements.txt`
- - Run file Python 3.11 > `main.py`
+ - Create file `.env` and write two variables `TG_TOKEN = "token"`, `ADMIN_ID = "id"`
+ - Run file `main.py` in Python 3.11 or older
 
 
