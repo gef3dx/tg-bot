@@ -5,7 +5,6 @@ from core.keyboard.reply import reply_keyboard
 from core.keyboard.inline import inline_keyboard
 from core.database.baseconnect import Database
 
-
 db = Database("db.sqlite")
 
 
@@ -35,17 +34,21 @@ async def hello(message: Message, bot: Bot):
     await message.answer(f"Привет {message.from_user.full_name}", reply_markup=inline_keyboard)
 
 async  def add_admin_handler(message: Message, bot: Bot):
-    id = message.text[10:]
-    db.add_admin(int(id))
-    if not db.user_exists(id):
-        await message.answer(f"Пользователь с таким id {id} не подписан", reply_markup=reply_keyboard)
-    else:
-        await message.answer(f"Пользователь с id {id} добавлен в список администраторов")
+    if message.chat.type == "private":
+        if db.is_admin(message.from_user.id):
+            id = message.text[10:]
+            db.add_admin(int(id))
+            if not db.user_exists(id):
+                await message.answer(f"Пользователь с таким id {id} не подписан", reply_markup=reply_keyboard)
+            else:
+                await message.answer(f"Пользователь с id {id} добавлен в список администраторов")
 
 async  def remove_admin_handler(message: Message, bot: Bot):
-    id = message.text[13:]
-    db.remove_admin(int(id))
-    if not db.user_exists(id):
-        await message.answer(f"Пользователь с таким id {id} не подписан", reply_markup=reply_keyboard)
-    else:
-        await message.answer(f"Пользователь с id {id} удален из списока администраторов")
+    if message.chat.type == "private":
+        if db.is_admin(message.from_user.id):
+            id = message.text[13:]
+            db.remove_admin(int(id))
+            if not db.user_exists(id):
+                await message.answer(f"Пользователь с таким id {id} не подписан", reply_markup=reply_keyboard)
+            else:
+                await message.answer(f"Пользователь с id {id} удален из списока администраторов")
