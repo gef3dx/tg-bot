@@ -8,7 +8,7 @@ from aiogram.filters import Command
 from core.settings import settings
 from core.utils.commands import set_commands
 
-from core.handlers.basic import get_start, hello, send_all
+from core.handlers.basic import get_start, hello, send_all, add_admin_handler, remove_admin_handler
 from core.handlers.callback import inline_callback
 from core.database.baseconnect import Database
 
@@ -34,7 +34,12 @@ async def main() -> None:
     dp.shutdown.register(stop_bot)
 
     dp.message.register(get_start, Command(commands=['start', 'help']))
+
+    dp.message.register(add_admin_handler, Command(commands=["addadmin"]))
+    dp.message.register(remove_admin_handler, Command(commands=["removeadmin"]))
+
     dp.message.register(send_all, Command(commands=['sendall']))
+
     dp.message.register(hello, F.text == 'Привет')
 
     dp.callback_query.register(inline_callback, F.data == "test_funk")

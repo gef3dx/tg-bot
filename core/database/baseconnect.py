@@ -41,4 +41,10 @@ class Database:
         with self.connection:
             return self.cursor.execute("SELECT `user_id` from `users` WHERE `is_admin` = 1").fetchall()
 
+    def add_admin(self, user_id):
+        with self.connection:
+            return self.cursor.execute("UPDATE `users` SET `is_admin` = 1 WHERE `user_id` = ?", (user_id,))
 
+    def remove_admin(self, user_id):
+        with self.connection:
+            return self.cursor.execute("UPDATE `users` SET `is_admin` = 0 WHERE `user_id` = ?", (user_id,))
