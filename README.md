@@ -1,5 +1,5 @@
 # Tg-Bot temlate
-***
+**
  :loudspeaker: Start tempate telegram bot by gef3dx
 
 #### How to install
