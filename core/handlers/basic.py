@@ -14,7 +14,7 @@ async def get_start(message: Message, bot: Bot):
     if message.chat.type == "private":
         if not db.user_exists(message.from_user.id):
             db.user_add(message.from_user.id, message.from_user.full_name)
-        await message.answer(f"Добропожаловать {message.from_user.full_name}", reply_markup=reply_keyboard)
+        await message.answer(f"Добро пожаловать {message.from_user.full_name}", reply_markup=reply_keyboard)
 
 
 @admin
@@ -53,4 +53,4 @@ async def remove_admin_handler(message: Message, bot: Bot):
     if not db.user_exists(id):
         await message.answer(f"Пользователь с таким id {id} не подписан", reply_markup=reply_keyboard)
     else:
-        await message.answer(f"Пользователь с id {id} удален из списока администраторов")
+        await message.answer(f"Пользователь с id {id} удален из списка администраторов")
