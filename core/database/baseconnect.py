@@ -37,3 +37,6 @@ class Database:
             else:
                 return False
 
+    def all_admins_id(self):
+        with self.connection:
+            return self.cursor.execute("SELECT `user_id` from `users` WHERE `is_admin` = 1").fetchall()

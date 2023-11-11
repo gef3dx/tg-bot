@@ -10,15 +10,20 @@ from core.utils.commands import set_commands
 
 from core.handlers.basic import get_start, hello, send_all
 from core.handlers.callback import inline_callback
+from core.database.baseconnect import Database
+
+db = Database("db.sqlite")
 
 
 async def start_bot(bot: Bot):
     await set_commands(bot)
-    await bot.send_message(settings.bots.admin_id, text="Бот Запущен")
+    for admin_id in db.all_admins_id():
+        await bot.send_message(admin_id[0], text="Бот Запущен")
 
 
 async def stop_bot(bot: Bot):
-    await bot.send_message(settings.bots.admin_id, text="Бот Остановлен")
+    for admin_id in db.all_admins_id():
+        await bot.send_message(admin_id[0], text="Бот Остановлен")
 
 
 async def main() -> None:
