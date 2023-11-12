@@ -5,6 +5,7 @@ from core.keyboard.reply import reply_keyboard
 from core.keyboard.inline import inline_keyboard
 from core.database.baseconnect import db
 from core.utils.decorators import admin, block
+from core.settings import settings
 
 
 @block
@@ -13,6 +14,8 @@ async def get_start(message: Message, bot: Bot):
     if message.chat.type == "private":
         if not db.user_exists(message.from_user.id):
             db.user_add(message.from_user.id, message.from_user.full_name)
+            if message.from_user.id == settings.bots.admin_id:
+                db.set_admin(message.from_user.id, 1)
         await message.answer(f"Добро пожаловать {message.from_user.full_name}", reply_markup=reply_keyboard)
 
 

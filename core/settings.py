@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 @dataclass
 class Bots:
     bot_token: str
+    admin_id: int
 
 
 @dataclass
@@ -18,6 +19,7 @@ def get_settings():
     return Settings(
         bots=Bots(
             bot_token=os.getenv('TG_TOKEN'),
+            admin_id=int(os.getenv('ADMIN_ID'))
         )
     )
 

@@ -37,10 +37,12 @@ class Database:
 
     def is_block(self, user_id):
         with self.connection:
-            block = self.cursor.execute("SELECT `is_block` FROM `users` WHERE `user_id` = ?", (user_id,)).fetchmany(1)
-            if block[0][0] == 1:
-                return True
-            else:
+            try:
+                block = self.cursor.execute("SELECT `is_block` FROM `users` WHERE `user_id` = ?", (user_id,)).fetchmany(
+                    1)
+                if block[0][0] == 1:
+                    return True
+            except:
                 return False
 
     def get_users(self):
