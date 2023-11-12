@@ -11,3 +11,13 @@ def admin(func):
             await message.reply("У вас нет доступа к этой команде!")
 
     return decorator
+
+
+def block(func):
+    async def decorator(message: Message, bot: Bot):
+        if not db.is_block(message.from_user.id):
+            await func(message, bot)
+        else:
+            await message.reply("Ваш профиль заблокирован!")
+
+    return decorator

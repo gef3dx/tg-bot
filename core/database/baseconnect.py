@@ -35,7 +35,7 @@ class Database:
         with self.connection:
             return self.cursor.execute("UPDATE `users` SET `is_block` = ? WHERE `user_id` = ?", (is_block, user_id,))
 
-    def is_block(self, user_id, is_block):
+    def is_block(self, user_id):
         with self.connection:
             block = self.cursor.execute("SELECT `is_block` FROM `users` WHERE `user_id` = ?", (user_id,)).fetchmany(1)
             if block[0][0] == 1:
