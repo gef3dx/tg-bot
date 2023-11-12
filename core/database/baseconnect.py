@@ -67,13 +67,9 @@ class Database:
             except:
                 pass
 
-    def add_admin(self, user_id):
+    def set_admin(self, user_id, admin):
         with self.connection:
-            return self.cursor.execute("UPDATE `users` SET `is_admin` = 1 WHERE `user_id` = ?", (user_id,))
-
-    def remove_admin(self, user_id):
-        with self.connection:
-            return self.cursor.execute("UPDATE `users` SET `is_admin` = 0 WHERE `user_id` = ?", (user_id,))
+            return self.cursor.execute("UPDATE `users` SET `is_admin` = ? WHERE `user_id` = ?", (admin, user_id,))
 
 
 db = Database("db.sqlite")

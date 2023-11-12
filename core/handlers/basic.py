@@ -40,7 +40,7 @@ async def hello(message: Message, bot: Bot):
 async def add_admin_handler(message: Message, bot: Bot):
     """Добавление администратора"""
     idu = message.text[10:]
-    db.add_admin(int(idu))
+    db.set_admin(int(idu), 1)
     if not db.user_exists(idu):
         await message.answer(f"Пользователь с таким id {idu} не подписан", reply_markup=reply_keyboard)
     else:
@@ -51,7 +51,7 @@ async def add_admin_handler(message: Message, bot: Bot):
 async def remove_admin_handler(message: Message, bot: Bot):
     """Удаление администратора"""
     idu = message.text[13:]
-    db.remove_admin(int(idu))
+    db.set_admin(int(idu), 0)
     if not db.user_exists(idu):
         await message.answer(f"Пользователь с таким id {idu} не подписан", reply_markup=reply_keyboard)
     else:
