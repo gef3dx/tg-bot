@@ -10,20 +10,20 @@ from core.utils.commands import set_commands
 
 from core.handlers.basic import get_start, hello, send_all, add_admin_handler, remove_admin_handler
 from core.handlers.callback import inline_callback
-from core.database.baseconnect import Database
-
-db = Database("db.sqlite")
+from core.database.baseconnect import db
 
 
 async def start_bot(bot: Bot):
     await set_commands(bot)
-    for admin_id in db.all_admins_id():
-        await bot.send_message(admin_id[0], text="Бот Запущен")
+    if db.all_admins_id():
+        for admin_id in db.all_admins_id():
+            await bot.send_message(admin_id[0], text="Бот Запущен")
 
 
 async def stop_bot(bot: Bot):
-    for admin_id in db.all_admins_id():
-        await bot.send_message(admin_id[0], text="Бот Остановлен")
+    if db.all_admins_id():
+        for admin_id in db.all_admins_id():
+            await bot.send_message(admin_id[0], text="Бот Остановлен")
 
 
 async def main() -> None:

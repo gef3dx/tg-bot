@@ -1,8 +1,6 @@
 from aiogram import Bot
 from aiogram.types import Message
-from core.database.baseconnect import Database
-
-db = Database("db.sqlite")
+from core.database.baseconnect import db
 
 
 def admin(func):
