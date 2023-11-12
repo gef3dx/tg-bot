@@ -9,4 +9,5 @@ def admin(func):
             await func(message, bot)
         else:
             await message.reply("У вас нет доступа к этой команде!")
+
     return decorator
