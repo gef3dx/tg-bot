@@ -3,6 +3,8 @@ import sqlite3
 
 
 class Database:
+    """Класс CRUD database SQLIite3"""
+
     def __init__(self, db_file):
         if not os.path.exists(db_file):
             self.connection = sqlite3.connect(db_file)
