@@ -19,6 +19,11 @@ async def get_start(message: Message, bot: Bot):
         await message.answer(f"Добро пожаловать {message.from_user.full_name}", reply_markup=reply_keyboard)
 
 
+@block
+async def get_profile(message: Message, bot: Bot):
+    await message.answer(f"{message.from_user.full_name} ваш id {message.from_user.id} на вашем счете 0 бонусов")
+
+
 @admin
 async def send_all(message: Message, bot: Bot):
     """Рассылка всем подписчикам"""

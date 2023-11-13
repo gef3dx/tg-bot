@@ -9,7 +9,7 @@ from core.settings import settings
 from core.utils.commands import set_commands
 
 from core.handlers.basic import get_start, hello, send_all, add_admin_handler, remove_admin_handler, user_ban, \
-    user_unban
+    user_unban, get_profile
 from core.handlers.callback import inline_callback
 from core.database.baseconnect import db
 
@@ -36,11 +36,13 @@ async def main() -> None:
 
     dp.message.register(get_start, Command(commands=['start', 'help']))
 
-    dp.message.register(add_admin_handler, Command(commands=["addadmin"]))
-    dp.message.register(remove_admin_handler, Command(commands=["removeadmin"]))
+    dp.message.register(get_profile, Command(commands=['profile']))
 
-    dp.message.register(user_ban, Command(commands=["ban"]))
-    dp.message.register(user_unban, Command(commands=["unban"]))
+    dp.message.register(add_admin_handler, Command(commands=['addadmin']))
+    dp.message.register(remove_admin_handler, Command(commands=['removeadmin']))
+
+    dp.message.register(user_ban, Command(commands=['ban']))
+    dp.message.register(user_unban, Command(commands=['unban']))
 
     dp.message.register(send_all, Command(commands=['sendall']))
 
