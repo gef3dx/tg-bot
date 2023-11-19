@@ -1,0 +1,10 @@
+version: '3.7'
+services:
+  bot:
+    build: .
+    command: python main.py
+    volumes:
+      - .:/usr/src/app
+    env_file:
+      - ./.env
+    restart: always
