@@ -5,7 +5,9 @@
 #### Как установить
 
  - :point_right: Клонируйте репозиторий 
-```git clone https://github.com/gef3dx/tg-bot.git```
+```
+git clone https://github.com/gef3dx/tg-bot.git
+```
  - :point_right: Перейдите в папку ```tg-bot```
  - :point_right: Создайте виртуализацию VENV `python -m venv venv`
  - :point_right: Установите зависимости requirements `pip install -r requirements.txt`
