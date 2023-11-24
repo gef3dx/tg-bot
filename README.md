@@ -1,4 +1,4 @@
-![alt text](https://www.google.com/url?sa=i&url=https%3A%2F%2Frobokassa.com%2Fcontent%2Fprodazhi-v-telegram-cherez-robokassa.html&psig=AOvVaw3_svgpCJFZPp2-ZHHpPWjz&ust=1700907687872000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCNiDjYm13IIDFQAAAAAdAAAAABAD)
+![alt text](https://robokassa.com/upload/medialibrary/12e/12ec7d81223bf2b07bf44e4e36333677.jpg)
 
 # Tg-Bot Шаблон
 **
