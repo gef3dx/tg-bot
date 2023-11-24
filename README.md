@@ -73,7 +73,7 @@ docker-compose up
 ```
 docker-compose down
 ```
-##### Способ 2
+##### Method 2
 
  - :point_right: Сlone repository
 ```
