@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "tg-bot"
+version = "0.1.0"
+description = "aiogram bot tamplate"
+authors = ["gef3dx <gef3dx@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+aiogram = "3.1.1"
+python-dotenv = "^1.0.0"
+certifi = "^2023.11.17"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
